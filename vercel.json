@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "**/*.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/brosandbrews",
+      "destination": "/pages/brosandbrews.html"
+    },
+    {
+      "source": "/success",
+      "destination": "/pages/success.html"
+    },
+    {
+      "source": "/capital",
+      "destination": "/pages/capital.html"
+    },
+    {
+      "source": "/joinus",
+      "destination": "/pages/joinus.html"
+    },
+    {
+      "source": "/partner",
+      "destination": "/pages/partner.html"
+    },
+    {
+      "source": "/donor",
+      "destination": "/pages/donor.html"
+    },
+    {
+      "source": "/grow",
+      "destination": "/pages/grow.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+}
