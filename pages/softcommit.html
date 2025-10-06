@@ -185,14 +185,14 @@
                 localStorage.setItem('brosandbrews-commit', JSON.stringify(formData));
 
                 // Redirect to payment options
-                window.location.href = 'getickets.html';
+                window.location.href = '/getickets';
 
             } catch (error) {
                 console.error('Error submitting soft commit:', error);
                 
                 // For now, if backend is not ready, still allow progression
                 localStorage.setItem('brosandbrews-commit', JSON.stringify(formData));
-                window.location.href = 'getickets.html';
+                window.location.href = '/getickets';
                 
                 // Uncomment this when backend is ready:
                 /*
