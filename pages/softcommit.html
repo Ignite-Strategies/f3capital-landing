@@ -37,13 +37,8 @@
                 </div>
 
                 <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
-                    <h2 class="text-xl font-bold text-f3-black mb-3">What's a Soft Commit?</h2>
-                    <p class="text-f3-slate mb-4">
-                        A soft commit helps us get an accurate headcount for planning purposes. It's not binding, 
-                        but it shows you're interested in attending and helps us prepare the right number of spots.
-                    </p>
-                    <p class="text-f3-slate text-sm">
-                        After submitting, you'll get payment options to secure your ticket ($25+ suggested contribution).
+                    <p class="text-f3-slate">
+                        Fill out the below so we know you're coming or at least thinking of coming. It will help as we manage our space at Port City Brewing.
                     </p>
                 </div>
             </div>
@@ -55,7 +50,7 @@
                 <form id="soft-commit-form" class="space-y-6">
                     <div>
                         <label for="name" class="block text-sm font-medium text-f3-black mb-2">
-                            F3 Name / Real Name *
+                            Name *
                         </label>
                         <input type="text" id="name" name="name" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-f3-red">
@@ -71,34 +66,45 @@
 
                     <div>
                         <label for="phone" class="block text-sm font-medium text-f3-black mb-2">
-                            Phone (Optional)
+                            Phone *
                         </label>
-                        <input type="tel" id="phone" name="phone"
+                        <input type="tel" id="phone" name="phone" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-f3-red"
                             placeholder="(555) 555-5555">
                     </div>
 
                     <div>
-                        <label for="ao" class="block text-sm font-medium text-f3-black mb-2">
-                            Home AO (Optional)
+                        <label for="likelihood" class="block text-sm font-medium text-f3-black mb-2">
+                            How likely to attend *
                         </label>
-                        <input type="text" id="ao" name="ao"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-f3-red"
-                            placeholder="e.g. The Capital, Clarendon, etc.">
+                        <select id="likelihood" name="likelihood" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-f3-red">
+                            <option value="">Select...</option>
+                            <option value="definitely">Definitely</option>
+                            <option value="tentative">Tentative</option>
+                            <option value="checking">Checking with the M</option>
+                        </select>
                     </div>
 
                     <div>
-                        <label for="guests" class="block text-sm font-medium text-f3-black mb-2">
-                            Number of Guests (Including You)
+                        <label for="bringing_others" class="block text-sm font-medium text-f3-black mb-2">
+                            If confirmed, will you bring your M or others? *
                         </label>
-                        <select id="guests" name="guests"
+                        <select id="bringing_others" name="bringing_others" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-f3-red">
-                            <option value="1">1 (Just me)</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5+</option>
+                            <option value="">Select...</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
                         </select>
+                    </div>
+
+                    <div>
+                        <label for="party_size" class="block text-sm font-medium text-f3-black mb-2">
+                            Total in your party expected *
+                        </label>
+                        <input type="number" id="party_size" name="party_size" required min="1" max="20"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-f3-red"
+                            placeholder="e.g. 2">
                     </div>
 
                     <div id="error-message" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
@@ -161,9 +167,10 @@
                 event: 'brosandbrews',
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value || null,
-                ao: document.getElementById('ao').value || null,
-                guests: parseInt(document.getElementById('guests').value),
+                phone: document.getElementById('phone').value,
+                likelihood: document.getElementById('likelihood').value,
+                bringing_others: document.getElementById('bringing_others').value,
+                party_size: parseInt(document.getElementById('party_size').value),
                 timestamp: new Date().toISOString()
             };
 
@@ -181,18 +188,18 @@
                     throw new Error('Submission failed');
                 }
 
-                // Store in localStorage for the payment page
+                // Store in localStorage
                 localStorage.setItem('brosandbrews-commit', JSON.stringify(formData));
 
-                // Redirect to payment options
-                window.location.href = '/getickets';
+                // Redirect to success page
+                window.location.href = '/softcommitsuccess';
 
             } catch (error) {
                 console.error('Error submitting soft commit:', error);
                 
                 // For now, if backend is not ready, still allow progression
                 localStorage.setItem('brosandbrews-commit', JSON.stringify(formData));
-                window.location.href = '/getickets';
+                window.location.href = '/softcommitsuccess';
                 
                 // Uncomment this when backend is ready:
                 /*

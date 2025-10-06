@@ -24,6 +24,10 @@
       "destination": "/pages/getickets.html"
     },
     {
+      "source": "/softcommitsuccess",
+      "destination": "/pages/softcommitsuccess.html"
+    },
+    {
       "source": "/success",
       "destination": "/pages/success.html"
     },
