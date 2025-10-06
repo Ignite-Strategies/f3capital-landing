@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve Your Spot – Bros & Brews</title>
+    <meta name="description" content="Soft commit to Bros & Brews. Let us know you're coming!">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'f3-black': '#000000',
+                        'f3-red': '#DC2626',
+                        'f3-slate': '#6B7280',
+                        'f3-cyan': '#06B6D4'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-f3-black">
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Soft Commit Form -->
+    <section class="py-16">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                <div class="text-center mb-8">
+                    <div class="text-5xl mb-4">💪</div>
+                    <h1 class="text-3xl font-bold text-f3-black mb-2">Reserve Your Spot</h1>
+                    <p class="text-f3-slate">Bros & Brews – October 23, 2024</p>
+                </div>
+
+                <form id="commit-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-f3-black mb-2">
+                            F3 Name / Real Name *
+                        </label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-f3-red">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-f3-black mb-2">
+                            Email *
+                        </label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-f3-red">
+                    </div>
+
+                    <div>
+                        <label for="ao" class="block text-sm font-medium text-f3-black mb-2">
+                            Home AO (Optional)
+                        </label>
+                        <input type="text" id="ao" name="ao"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-f3-red"
+                            placeholder="e.g. The Capital, Clarendon, etc.">
+                    </div>
+
+                    <div>
+                        <label for="guests" class="block text-sm font-medium text-f3-black mb-2">
+                            Number of Guests (Including You)
+                        </label>
+                        <select id="guests" name="guests"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-f3-red">
+                            <option value="1">1 (Just me)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <p class="text-sm text-f3-slate">
+                            <strong>What's a soft commit?</strong><br>
+                            Let us know you're planning to come! This helps us prepare for the right headcount. 
+                            You'll get payment details on the next page.
+                        </p>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-f3-red hover:bg-red-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition duration-300">
+                        Continue to Payment Options
+                    </button>
+                </form>
+            </div>
+
+            <!-- Event Quick Info -->
+            <div class="mt-8 text-center">
+                <div class="bg-white p-6 rounded-lg shadow border border-gray-200">
+                    <h3 class="font-bold text-lg mb-3">Event Details</h3>
+                    <div class="space-y-2 text-sm text-f3-slate">
+                        <p><strong>Date:</strong> October 23, 2024</p>
+                        <p><strong>Time:</strong> 6:00 PM - 9:00 PM</p>
+                        <p><strong>Location:</strong> Port City Brewing Company</p>
+                        <p><strong>Suggested Contribution:</strong> $25+</p>
+                        <p class="text-f3-red font-semibold">100% proceeds support F3 Accelerate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Load navigation and footer
+        fetch('../components/nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+            });
+
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // Form submission
+        document.getElementById('commit-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                ao: document.getElementById('ao').value,
+                guests: document.getElementById('guests').value
+            };
+
+            // Store in localStorage for now (you can send to a backend later)
+            localStorage.setItem('brosandbrews-commit', JSON.stringify(formData));
+
+            // Redirect to payment options page
+            window.location.href = 'brosandbrews-tickets.html';
+        });
+    </script>
+</body>
+</html>
+
