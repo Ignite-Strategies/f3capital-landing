@@ -16,16 +16,8 @@
       "destination": "/pages/brosandbrews.html"
     },
     {
-      "source": "/softcommit",
-      "destination": "/pages/softcommit.html"
-    },
-    {
       "source": "/getickets",
       "destination": "/pages/getickets.html"
-    },
-    {
-      "source": "/softcommitsuccess",
-      "destination": "/pages/softcommitsuccess.html"
     },
     {
       "source": "/success",
