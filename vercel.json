@@ -24,6 +24,10 @@
       "destination": "/pages/success.html"
     },
     {
+      "source": "/sponsorus",
+      "destination": "/pages/sponsorus.html"
+    },
+    {
       "source": "/capital",
       "destination": "/pages/capital.html"
     },
