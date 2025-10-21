@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Interest Form – F3 Capital Impact</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="Express your interest in sponsoring F3 Capital Impact. Fill out the form and we'll be in touch.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'f3-black': '#000000',
+                        'f3-red': '#DC2626',
+                        'f3-slate': '#6B7280',
+                        'f3-cyan': '#06B6D4'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-f3-black">
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Form Section -->
+    <section class="py-16 bg-gray-50 min-h-screen">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="text-6xl mb-6">🤝</div>
+                <h1 class="text-3xl md:text-5xl font-bold mb-4">Sponsor Interest Form</h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Thank you for your interest in sponsoring F3 Capital Impact! Fill out the form below and we'll be in touch within 24 hours.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                <form id="sponsor-form" class="space-y-6">
+                    <!-- Company Name -->
+                    <div>
+                        <label for="company" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Company/Organization Name <span class="text-f3-red">*</span>
+                        </label>
+                        <input type="text" id="company" name="company" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-transparent">
+                    </div>
+
+                    <!-- Contact Name -->
+                    <div>
+                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Contact Name <span class="text-f3-red">*</span>
+                        </label>
+                        <input type="text" id="name" name="name" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-transparent">
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Email <span class="text-f3-red">*</span>
+                        </label>
+                        <input type="email" id="email" name="email" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-transparent">
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Phone Number
+                        </label>
+                        <input type="tel" id="phone" name="phone"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-transparent">
+                    </div>
+
+                    <!-- Sponsorship Tier -->
+                    <div>
+                        <label for="tier" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Sponsorship Level <span class="text-f3-red">*</span>
+                        </label>
+                        <select id="tier" name="tier" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-transparent">
+                            <option value="">Select a tier...</option>
+                            <option value="bronze">🥉 Bronze Sponsor - $100</option>
+                            <option value="silver">🥈 Silver Sponsor - $250</option>
+                            <option value="gold">🥇 Gold Sponsor - $500</option>
+                            <option value="custom">Custom Sponsorship</option>
+                        </select>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Additional Information or Questions
+                        </label>
+                        <textarea id="message" name="message" rows="4"
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-f3-red focus:border-transparent"
+                                  placeholder="Tell us about your sponsorship goals, any specific questions, or custom partnership ideas..."></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-4">
+                        <button type="submit" 
+                                class="w-full px-8 py-4 bg-f3-red text-white font-bold rounded-lg hover:bg-red-700 transition">
+                            Submit Interest Form
+                        </button>
+                    </div>
+
+                    <!-- Success Message (hidden by default) -->
+                    <div id="success-message" class="hidden p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <p class="text-green-800 font-semibold">✓ Thank you! We've received your sponsorship interest and will be in touch soon.</p>
+                    </div>
+
+                    <!-- Error Message (hidden by default) -->
+                    <div id="error-message" class="hidden p-4 bg-red-50 border border-red-200 rounded-lg">
+                        <p class="text-red-800 font-semibold">Something went wrong. Please email us directly at <a href="mailto:sponsorships@f3capitalimpact.org" class="underline">sponsorships@f3capitalimpact.org</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Back Link -->
+            <div class="text-center mt-8">
+                <a href="/pages/sponsorus.html" class="text-f3-red hover:text-red-700 font-semibold">
+                    ← Back to Sponsorship Info
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Load navigation
+        fetch('/components/nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+            });
+
+        // Load footer
+        fetch('/components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // Form submission handler
+        document.getElementById('sponsor-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+                company: formData.get('company'),
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                tier: formData.get('tier'),
+                message: formData.get('message'),
+                timestamp: new Date().toISOString(),
+                source: 'f3capital-landing sponsor form'
+            };
+
+            // TODO: Replace with your actual form submission endpoint
+            // Options:
+            // 1. Google Forms endpoint
+            // 2. Backend API endpoint
+            // 3. Email service like FormSubmit, EmailJS, etc.
+            
+            // For now, show success message and email fallback
+            try {
+                // Temporary: Create mailto link as fallback
+                const subject = `Sponsor Interest: ${data.tier} - ${data.company}`;
+                const body = `
+Company: ${data.company}
+Contact: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Tier: ${data.tier}
+Message: ${data.message}
+                `.trim();
+                
+                // Show success message
+                document.getElementById('success-message').classList.remove('hidden');
+                document.getElementById('sponsor-form').reset();
+                
+                // Optional: Auto-send email (uncomment if desired)
+                // window.location.href = `mailto:sponsorships@f3capitalimpact.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                document.getElementById('error-message').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
+
